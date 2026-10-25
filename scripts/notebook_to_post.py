@@ -120,7 +120,7 @@ def export_markdown(nb_path, meta):
         body = converted.read_text(encoding="utf-8")
         body = body.replace(
             f"{nb_path.stem}_files/",
-            f"/personal-blog/notebook-assets/{nb_path.stem}/",
+            f"/notebook-assets/{nb_path.stem}/",
         )
         converted.write_text(body, encoding="utf-8")
         for img in assets_src.iterdir():

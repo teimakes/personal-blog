@@ -18,6 +18,7 @@ const pageTitle = title ? `${title} — ${SITE.title}` : `${SITE.title} — ${SI
 const desc = description || SITE.description;
 const fmt = (d: Date) =>
   new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(d);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <!doctype html>
@@ -30,8 +31,8 @@ const fmt = (d: Date) =>
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={desc} />
     <meta property="og:type" content="article" />
-    <link rel="alternate" type="application/rss+xml" title={SITE.title} href={`${import.meta.env.BASE_URL}/rss.xml`} />
-    <link rel="icon" href={`${import.meta.env.BASE_URL}/teimakes-mark.png`} type="image/png" />
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href={`${base}/rss.xml`} />
+    <link rel="icon" href={`${base}/teimakes-mark.png`} type="image/png" />
   </head>
   <body class:list={['notebook-page', `layout-${layout}`]}>
     <Header />
@@ -51,7 +52,7 @@ const fmt = (d: Date) =>
       <div class="subscribe-box">
         <h2>Enjoyed this post?</h2>
         <p>Subscribe to get new posts in your inbox. No spam, ever.</p>
-        <form class="subscribe-form" action={`${import.meta.env.BASE_URL}/subscribe`} method="get">
+        <form class="subscribe-form" action={`${base}/subscribe`} method="get">
           <input type="email" name="email" placeholder="you@example.com" required />
           <button type="submit">Subscribe</button>
         </form>

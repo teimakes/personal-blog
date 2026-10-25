@@ -13,6 +13,7 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 const fmt = (d: Date) =>
   new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(d);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <Base title={post.frontmatter.title} description={post.frontmatter.description}>
@@ -38,7 +39,7 @@ const fmt = (d: Date) =>
   <div class="subscribe-box">
     <h2>Enjoyed this post?</h2>
     <p>Subscribe to get new posts in your inbox. No spam, ever.</p>
-    <form class="subscribe-form" action={`${import.meta.env.BASE_URL}/subscribe`} method="get">
+    <form class="subscribe-form" action={`${base}/subscribe`} method="get">
       <input type="email" name="email" placeholder="you@example.com" required />
       <button type="submit">Subscribe</button>
     </form>

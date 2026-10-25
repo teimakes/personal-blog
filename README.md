@@ -1,6 +1,6 @@
 # AI Notebook — Personal AI Blog
 
-A minimal, clean personal blog focused on AI, LLMs, AI Agents, AI Movies, AI Animation and AI Manga. Built with [Astro](https://astro.build), posts written in Markdown, hosted on **Cloudflare Pages**.
+A minimal, clean personal blog focused on AI, LLMs, AI Agents, AI Movies, AI Animation and AI Manga. Built with [Astro](https://astro.build), posts written in Markdown, hosted at **https://teimakes.github.io/** with GitHub Pages.
 
 ## Writing posts
 
@@ -51,7 +51,7 @@ The script also generates **nbconvert HTML notebook versions** of each notebook,
 
 The classic Markdown post remains available at `/posts/<notebook-name>`.
 
-The converted `.md` and assets are checked in, so Cloudflare never needs Python — the notebook pipeline runs only on your machine.
+The converted `.md` and assets are checked in, so the GitHub Pages build never needs Python — the notebook pipeline runs only on your machine.
 
 ## Development
 
@@ -62,22 +62,15 @@ npm run build     # production build to ./dist
 npm run preview   # preview the production build
 ```
 
-## Deploying to Cloudflare Pages
+## Deploying to GitHub Pages
 
-1. Push this repo to GitHub.
-2. In the Cloudflare dashboard: **Workers & Pages → Create → Pages → Connect to Git** and select the repo.
-3. Build settings (usually auto-detected):
-   - **Framework preset:** Astro
-   - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-4. Deploy. Every push to the main branch auto-deploys; PRs get preview URLs.
+The repository is `teimakes/teimakes.github.io`, and the site is published at https://teimakes.github.io/.
 
-Or deploy from your machine:
+1. In the repository settings, open **Pages** and set **Source** to **GitHub Actions**.
+2. Push changes to `main`. The workflow in `.github/workflows/deploy.yml` installs dependencies, builds the site, and deploys `dist` to GitHub Pages.
+3. You can also start the **Deploy to GitHub Pages** workflow manually from the Actions tab.
 
-```bash
-npm run build
-npx wrangler pages deploy dist
-```
+The Astro `base` is `/`. Keep internal links and notebook asset paths relative to the domain root.
 
 ## Configuration
 

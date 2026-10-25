@@ -1,7 +1,7 @@
 import { SITE } from '../config';
 
 export async function GET() {
-  const homePageUrl = 'https://teimakes.github.io/personal-blog/';
+  const homePageUrl = 'https://teimakes.github.io/';
   const postImportResult = import.meta.glob('./posts/*.{md,mdx}', { eager: true });
   const posts = Object.values(postImportResult);
   const sorted = posts
